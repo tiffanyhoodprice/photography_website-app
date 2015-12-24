@@ -4,3 +4,40 @@
 //customize contrast color
 //$contrast: #01a9e0;
 //@import "jednotka/jednotka";
+
+.raya {
+  background-image: image-url("carousels/raya.jpg");
+  min-height: 700px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-top: -175px;
+  background-position: center;
+
+}
+
+.parents {
+  background-image: image-url("carousels/parents.jpg");
+  min-height: 700px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-top: -175px;
+  background-position: center;
+}
+
+.wedding {
+  background-image: image-url("carousels/ccwedding.jpg");
+  min-height: 700px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-top: -175px;
+  background-position: center;
+}
+
+.bridge {
+  background-image: image-url("carousels/bridge.jpg");
+  min-height: 700px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-top: -175px;
+  background-position: center;
+}
