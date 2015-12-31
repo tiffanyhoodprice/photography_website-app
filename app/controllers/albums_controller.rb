@@ -33,6 +33,18 @@ class AlbumsController < ApplicationController
   #   end
   # end
 
+  def portraits
+  end
+
+  def weddings  
+  end
+
+  def family
+  end
+
+  def events
+  end
+
   def destroy
     Album.find_by(id: params[:id]).update(active: false)
     redirect_to "/albums"
