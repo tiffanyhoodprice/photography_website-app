@@ -4,6 +4,7 @@
   <title>PhotographyWebsiteApp</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tags %>
 </head>
 <body class='homepage'>
@@ -92,12 +93,22 @@
                     </span>
                   </a>
                   <li class='dropdown'>
-                  <a class='dropdown-toggle' data-delay='50' data-hover='dropdown' href='#'>
+                  <a class='dropdown-toggle' data-delay='50' data-hover='dropdown' href='/users/sign_in'>
                     <span>
-                      Login
+                      Login/Sign Up
+                      <!-- <i class='fa fa-angle-down'></i> -->
+                    </span>
+                  </a></li>
+                  <% if current_user %>
+                  <li class='dropdown'>
+                  <a class='dropdown-toggle' data-delay='50' data-hover='dropdown' href='/users/sign_out'>
+                    <span>
+                      Sign Out
                       <!-- <i class='fa fa-angle-down'></i> -->
                     </span>
                   </a>
+                  <% end %>
+                  
 
             </div>
           </nav>

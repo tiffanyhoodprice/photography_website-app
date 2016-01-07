@@ -29,6 +29,9 @@ gem 'rspec-rails', '~> 3.0'
 gem 'thematic'
 gem 'compass-rails'
 gem 'carrierwave'
+gem 'mini_magick'
+gem 'fog'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -43,6 +46,7 @@ group :development, :test do
   gem 'byebug'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'annotate'
 end
 
 group :development do

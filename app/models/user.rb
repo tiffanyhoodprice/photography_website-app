@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-  belongs_to :role
   has_many :albums, through: :album_photos
   has_many :photos, through: :user_photos
 
