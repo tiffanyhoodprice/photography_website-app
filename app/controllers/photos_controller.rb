@@ -1,7 +1,9 @@
 class PhotosController < ApplicationController
+  before_action :authenticate_admin!, except: [:index]
 
   def new
     @photo = Photo.new
+
   end
 
   def create
@@ -33,8 +35,11 @@ class PhotosController < ApplicationController
   private
 
     def photo_params    
-      params.require(:photo).permit(:name)
+      params.require(:photo).permit(:name, category_ids: [])
     end
+
+
+
 
 
 end

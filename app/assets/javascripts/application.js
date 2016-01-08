@@ -3,3 +3,5 @@
 //= require jednotka/bootstrap/bootstrap.min
 //= require jednotka/plugins/_plugins
 //= require jednotka/jednotka
+//= require angular
+//=require app

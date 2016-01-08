@@ -35,7 +35,7 @@
                  
                 </li>
                 <li class='dropdown'>
-                  <a class='dropdown-toggle' data-delay='50' data-hover='dropdown'  href='/albums/portraits'>
+                  <a class='dropdown-toggle' data-delay='50' data-hover='dropdown'  href='/portraits'>
                     <span>
                       Portraits
                       <!-- <i class='fa fa-angle-down'></i> -->
@@ -44,7 +44,7 @@
 
                 </li>
                 <li class='dropdown'>
-                  <a class='dropdown-toggle' data-delay='50' data-hover='dropdown'  href='/albums/weddings'>
+                  <a class='dropdown-toggle' data-delay='50' data-hover='dropdown'  href='/weddings'>
                     <span>
                       Weddings
                       <!-- <i class='fa fa-angle-down'></i> -->
@@ -53,7 +53,7 @@
 
                 </li>
                 <li class='dropdown'>
-                  <a class='dropdown-toggle' data-delay='50' data-hover='dropdown' href='/albums/family'>
+                  <a class='dropdown-toggle' data-delay='50' data-hover='dropdown' href='/family'>
                     <span>
                       Family
                       <!-- <i class='fa fa-angle-down'></i> -->
@@ -61,7 +61,7 @@
                   </a>
                   </li>
                   <li class='dropdown'>
-                  <a class='dropdown-toggle' data-delay='50' data-hover='dropdown' href='/albums/events'>
+                  <a class='dropdown-toggle' data-delay='50' data-hover='dropdown' href='/events'>
                     <span>
                       Events
                       <!-- <i class='fa fa-angle-down'></i> -->
@@ -92,14 +92,17 @@
                       <i class=''></i>
                     </span>
                   </a>
+                  <% if !current_user  %>
                   <li class='dropdown'>
                   <a class='dropdown-toggle' data-delay='50' data-hover='dropdown' href='/users/sign_in'>
                     <span>
                       Login/Sign Up
                       <!-- <i class='fa fa-angle-down'></i> -->
                     </span>
-                  </a></li>
-                  <% if current_user %>
+                  </a>
+                  </li>
+                  <% else  %>
+                  
                   <li class='dropdown'>
                   <a class='dropdown-toggle' data-delay='50' data-hover='dropdown' href='/users/sign_out'>
                     <span>
@@ -108,7 +111,15 @@
                     </span>
                   </a>
                   <% end %>
-                  
+                  <% if current_user && current_user.user_type == "admin" %>
+                  <li class='dropdown'>
+                  <a class='dropdown-toggle' data-delay='50' data-hover='dropdown' href='/admin'>
+                    <span>
+                      Admin
+                      <!-- <i class='fa fa-angle-down'></i> -->
+                    </span>
+                  </a>
+                  <% end %>
 
             </div>
           </nav>

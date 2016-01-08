@@ -2,10 +2,11 @@ Rails.application.routes.draw do
 
   devise_for :users
   root to: 'albums#index'
-  get '/albums/portraits', to: 'albums#portraits'
-  get '/albums/weddings', to: 'albums#weddings'
-  get '/albums/family', to: 'albums#family'
-  get '/albums/events', to: 'albums#events'
+  get '/admin', to: 'user_photos#admin'
+  get '/portraits', to: 'categorized_photos#portraits'
+  get '/weddings', to: 'categorized_photos#weddings'
+  get '/family', to: 'categorized_photos#family'
+  get '/events', to: 'categorized_photos#events'
   resources :albums
   resources :categories
   resources :categorized_photos
