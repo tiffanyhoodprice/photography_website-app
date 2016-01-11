@@ -1,66 +1,26 @@
-<h1>This is a family TEST</h1>
-
 <div id='main-content'>
   <div class='container'>
+   <h1>Family Photography</h1>
+    <div class="grid">
+      <% @CategorizedPhotos.each do |categorized_photo| %>
 
-
-
-    <div class="row portfolio-boxes">
-      <div class="col-sm-3 portfolio-box portfolio-item">
-        <a href="#">
+      <% if categorized_photo.photo %>
+      <div class="grid-item">
+        
           <div class="image-link">
             <i class="fa-icon-search"></i>
-            <img class="img-responsive img-rounded center-block" alt="..." width="..." height="..." src="...">
+            <img class="img-responsive center-block" alt="..." width="..." height="..." src="<%= categorized_photo.photo.name.medium %>">
           </div>
-          <h3 class="title">ONE</h3>
-          <p class="category">Category</p>
-        </a>
       </div>
-    </div>
-    <div class="row portfolio-boxes">
-      <div class="col-sm-3 portfolio-box portfolio-item">
-        <a href="#">
-          <div class="image-link">
-            <i class="fa-icon-search"></i>
-            <img class="img-responsive img-rounded center-block" alt="..." width="..." height="..." src="...">
-          </div>
-          <h3 class="title">TWO</h3>
-          <p class="category">Category</p>
-        </a>
-      </div>
-    </div>
-    <div class="row portfolio-boxes">
-      <div class="col-sm-3 portfolio-box portfolio-item">
-        <a href="#">
-          <div class="image-link">
-            <i class="fa-icon-search"></i>
-            <img class="img-responsive img-rounded center-block" alt="..." width="..." height="..." src="...">
-          </div>
-          <h3 class="title">THREE</h3>
-          <p class="category">Category</p>
-        </a>
-      </div>
-    </div>
-    <div class="row portfolio-boxes">
-      <div class="col-sm-3 portfolio-box portfolio-item">
-        <a href="#">
-          <div class="image-link">
-            <i class="fa-icon-search"></i>
-            <img class="img-responsive img-rounded center-block" alt="..." width="..." height="..." src="...">
-          </div>
-          <h3 class="title">FOUR</h3>
-          <p class="category">Category</p>
-        </a>
-      </div>
+      <% end %>
+      <% end %>
     </div>
 
 
 
 
-
-
-</div>
-<div class='fade' id='scroll-to-top'>
-  <i class='fa fa-chevron-up'></i>
-</div>
+  </div>
+  <div class='fade' id='scroll-to-top'>
+    <i class='fa fa-chevron-up'></i>
+  </div>
 </div>

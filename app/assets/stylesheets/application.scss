@@ -5,6 +5,17 @@
 //$contrast: #01a9e0;
 //@import "jednotka/jednotka";
 
+.grid-item { 
+  width: 350px;
+  padding: 5px;
+}
+
+.grid-item--width2 { 
+  width: 400px; 
+  padding: 5px;
+  }
+
+
 .lead {
   font-size:130%;
   font-style:italic;
@@ -64,27 +75,32 @@ border-bottom-left-radius: 0 !important;
   height: 275px;
   min-height: 275px;
 }
+.carousel-image {
+  
+  opacity: 0.5;
+}
 
 .carousel {
   min-height: 275px;
   background-repeat: no-repeat;
   background-size: cover;
-  // margin-top: 75px;
+  // margin-top: 0px;
   background-position: center;
 }
 
-#raya {
-  background-image: image-url("carousels/raya.jpg");
-}
 
-#parents {
-  background-image: image-url("carousels/parents.jpg");
-}
+// #raya {
+//   background-image: image-url("carousels/raya.jpg");
+// }
+
+// #parents {
+//   background-image: image-url("carousels/parents.jpg");
+// }
 
 #wedding {
   background-image: image-url("carousels/ccwedding.png");
 }
 
-#bridge {
-  background-image: image-url("carousels/bridge.jpg");
-}
+// #bridge {
+//   background-image: image-url("carousels/bridge.jpg");
+// }

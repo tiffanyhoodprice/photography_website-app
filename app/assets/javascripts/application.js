@@ -4,4 +4,5 @@
 //= require jednotka/plugins/_plugins
 //= require jednotka/jednotka
 //= require angular
-//=require app
+//= require imagesloaded.pkgd.js
+//= require app

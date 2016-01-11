@@ -1,0 +1,12 @@
+<div id='main-content'>
+  <div class='container'>
+    <%= form_for @photo, url: {action: "create"} do |f| %>
+    <%= f.text_field :name %>
+    <%= f.file_field :name %>
+
+    <%= f.label :category, 'Select Album' %>
+    <%= f.select :category_ids, Album.all.collect {|album| [album.name, album.id]}, {}, :multiple => false %>
+    <%= f.submit "Define Album Photos" %>
+    <% end %>
+  </div>
+</div>

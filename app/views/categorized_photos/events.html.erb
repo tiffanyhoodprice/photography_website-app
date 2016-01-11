@@ -1,14 +1,26 @@
-<h1>This is an events TEST!</h1>
-<!-- <div class="row">
-  <% @CategorizedPhotos.each do |CategorizedPhoto| %>
-  <div class="col-md-3">
-    <div class="product-box">
-      <a href="/products/<%= wedding.id %>"> 
-        <img src="<%= wedding.images.first.image_url %>" class="img-responsive">
-      </a>
-      </div>
-    </div>
-    <% end %>
-  </div> -->
+<div id='main-content'>
+  <div class='container'>
+ <h1>Event Photography</h1>
+     <div class="grid">
+      <% @CategorizedPhotos.each do |categorized_photo| %>
 
-  
+      <% if categorized_photo.photo %>
+      <div class="grid-item">
+        
+          <div class="image-link">
+            <i class="fa-icon-search"></i>
+            <img class="img-responsive center-block" alt="..." width="..." height="..." src="<%= categorized_photo.photo.name.medium %>">
+          </div>
+      </div>
+      <% end %>
+      <% end %>
+    </div>
+
+
+
+
+  </div>
+  <div class='fade' id='scroll-to-top'>
+    <i class='fa fa-chevron-up'></i>
+  </div>
+</div>

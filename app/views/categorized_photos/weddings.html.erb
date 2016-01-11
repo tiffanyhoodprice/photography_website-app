@@ -1,1 +1,30 @@
-<h1>This is a weddings TEST</h1>
+<div id='main-content'>
+  <div class='container'>
+<h1>Wedding Photography</h1>
+    
+    <div class="grid">
+      <% @CategorizedPhotos.each do |categorized_photo| %>
+
+      <% if categorized_photo.photo %>
+      <div class="grid-item">
+        <div class='portfolio-box'>
+        
+          <div class="image-link">
+            <i class="fa-icon-search"></i>
+            <img class="img-responsive center-block" alt="..." width="..." min-height="..." src="<%= categorized_photo.photo.name.medium %>">
+            <a class="overlay" href="#">
+              </div>
+          </div>
+      </div>
+      <% end %>
+      <% end %>
+    </div>
+
+
+
+
+  </div>
+  <div class='fade' id='scroll-to-top'>
+    <i class='fa fa-chevron-up'></i>
+  </div>
+</div>

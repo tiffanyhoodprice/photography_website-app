@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/weddings', to: 'categorized_photos#weddings'
   get '/family', to: 'categorized_photos#family'
   get '/events', to: 'categorized_photos#events'
+  get '/scenic', to: 'categorized_photos#scenic'
   resources :albums
   resources :categories
   resources :categorized_photos

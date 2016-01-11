@@ -1,5 +1,8 @@
 class CategoriesController < ApplicationController
 
+  def new
+    @category = Category.new
+  end
 
   def create
     @category = Category.new(name: params[:category][:name])
@@ -12,8 +15,6 @@ class CategoriesController < ApplicationController
       end
   end
 
-  def new
-    @category = Category.new
-  end
+ 
 
 end
