@@ -1,16 +1,57 @@
 <div id='main-content'>
-    <div class='container'>
+  <div class='container'>
+    <div class= 'container'>
+      <h1>Admin View</h1>
+      <div class='row'>
+        <div class='col-md-6 dashboard'>
+          <h3>Upload Photos</h3>
+          <div class='box1'>
+            <%= form_for @photo, url: {action: "create"} do |f| %>
+            <%= f.text_field :name %>
+            <%= f.file_field :name %>
 
-<h1>Admin View</h1>
 
-<p><a href="/photos/new">Upload Photos</a></p>
+            <%= f.label :category, 'Select categories' %>
+            <%= f.select :category_ids, Category.all.collect {|category| [category.name, category.id]}, {}, :multiple => true %>
 
-<p>Delete Photos</p>
+            <%= f.label :album, 'Select album' %>
+            <%= f.collection_select :album_id, Album.all, :id, :name %>
 
-<p><a href="/categories/new">Create New Category</a></p>
-<p>Edit Categories</p>
 
-<p><a href="/albums/new">Create New Album</a></p>
+            <%= f.submit "Upload Photo" %>
+            <% end %>
+          </div>
+        </div>
 
-</div>
+
+
+      <div class='container'>
+        <div class='col-md-6 dashboard'>
+          <h3>Create a new album:</h3>
+          <%= form_for @album, url: {action: "create"} do |f| %>
+          <div class='box2'>
+
+            <%= f.text_field :name %>
+            <%= f.submit "Create" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+      <div class='row'>
+        <!-- <div class='container'> -->
+          <div class='col-md-6 dashboard'>
+            <h3>Create a new category:</h3>
+            <%= form_for @category, url: {action: "create"} do |f| %>
+            <div class='box1'>
+
+              <%= f.text_field :name %>
+              <%= f.submit "Create" %>
+              <% end %>
+            </div>
+          </div>
+        <!-- </div> -->
+      </div>
+    </div>
+  </div>
 </div>

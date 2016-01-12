@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
   devise_for :users
-  root to: 'albums#index'
+  root to: 'pages#index'
+  get '/about', to: 'pages#about'
+  get '/contact', to: 'pages#contact'
   get '/admin', to: 'user_photos#admin'
   get '/portraits', to: 'categorized_photos#portraits'
   get '/weddings', to: 'categorized_photos#weddings'
@@ -14,6 +16,7 @@ Rails.application.routes.draw do
   resources :photos
   resources :user_photos
   resources :album_photos
+  resources :pages
  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

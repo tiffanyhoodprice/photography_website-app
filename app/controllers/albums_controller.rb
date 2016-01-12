@@ -1,8 +1,8 @@
 class AlbumsController < ApplicationController
 
-  def index
-    @albums = Album.all
-  end
+  # def index
+  #   @albums = Album.all
+  # end
 
   def new
     @album = Album.new
@@ -11,7 +11,7 @@ class AlbumsController < ApplicationController
   def create
     @album = Album.new(name: params[:album][:name])
     if @album.save
-      redirect_to root_path
+      redirect_to 'root_path'
     else
       render :new
     end

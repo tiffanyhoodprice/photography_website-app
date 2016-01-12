@@ -1,13 +1,14 @@
 <div id='main-content'>
-  <div class='container js-masonry'>
+  <div class='container'>
    <h1>Portrait Photography</h1>
     <div class="grid">
       <% @CategorizedPhotos.each do |categorized_photo| %>
       <div class="grid-item">
-        
+         <div class='portfolio-box'>
           <div class="image-link">
             <i class="fa-icon-search"></i>
-            <img class="img-responsive center-block" alt="..." width="..." height="..." src="<%= categorized_photo.photo.name.medium %>">
+            <img class="img-responsive center-block img-rounded" alt="..." width="..." height="..." src="<%= categorized_photo.photo.name.medium %>">
+          </div>
           </div>
         
       </div>
