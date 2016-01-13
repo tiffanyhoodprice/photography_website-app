@@ -5,10 +5,54 @@
 //$contrast: #01a9e0;
 //@import "jednotka/jednotka";
 
+// .row.container-height {
+//   overflow: hidden; 
+// }
 
+// .row.container-height > [class*="col-"]{
+//     margin-bottom: -99999px;
+//     padding-bottom: 99999px;
+// }
+.thumbnail {
+  max-width:100px;
+}
+.box1 {
+  background: #8DC153;
+}
+
+.box2 {
+  background: #F0AD4E;
+}
+
+.box3 {
+  background: #5DC3DE;
+}
+
+.box4 {
+  background: #428BCA;
+}
+
+.box5 {
+  background: #D9534F;
+}
+
+.box6 {
+  background: #5CB85C;
+}
+
+.box7 {
+  background: #9CA4AF;
+}
 .dashboard {
-  border-style:solid;
-  padding:10px;
+  padding-bottom:10px;
+}
+
+.dashboard a:link {
+  color: white;
+}
+
+.dashboard a:visited {
+  color: navy;
 }
 // html,body,.dashboard{
 //     width:100%;
@@ -45,7 +89,10 @@
   width: 350px;
   padding: 5px;
 }
-
+.grid-item-thumbnail { 
+  width: 150px;
+  padding: 5px;
+}
 .grid-item--width2 { 
   width: 400px; 
   padding: 5px;

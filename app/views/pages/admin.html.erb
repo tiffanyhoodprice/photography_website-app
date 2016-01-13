@@ -1,0 +1,117 @@
+<div id='main-content'>
+  <div class='container'>
+    <div class= 'container'>
+      <h1>Admin Dashboard</h1>
+
+      <div class='row container-height'>
+        <div class='col-md-6 dashboard box3'>
+          <h3>Create a new album:</h3>
+          <%= form_for @album, url: albums_path(@album) do |f| %>
+          <div>
+            <%= f.text_field :name %>
+            <%= f.submit "Create" %>
+            <% end %>
+          </div>
+          <br/>
+        </div>
+
+        <div class='col-md-6 dashboard box5'>
+          <h3>Create a new category:</h3>
+          <%= form_for @category, url: categories_path(@category) do |f| %>
+          <div>
+            <%= f.text_field :name %>
+            <%= f.submit "Create" %>
+            <% end %>
+          </div>
+          <br/>
+        </div>
+      </div>
+
+      <div class='row container-height'>        
+        <div class='col-md-3 dashboard box4'>
+          <h3>Rename an Album:</h3>
+          <ul>
+            <% @albums.each do |album| %>
+            <li><%= link_to(album.name, "/albums/#{album.id}/edit") %></li>
+            <% end %>
+          </ul>
+          <br/>
+        </div>
+
+        <div class='col-md-3 dashboard box4'>
+          <h3>Delete Album:</h3>
+          <ul>
+            <% @albums.each do |album| %>
+            <li>
+              <%= link_to "Delete (#{album.name})", album_path(album), {method: :delete, :data => {:confirm => "Are you sure?"}} %>  
+            </li>
+            <% end %>
+          </ul>
+          <br/>
+        </div>
+
+
+        <div class='col-md-3 dashboard box6'>
+          <h3>Rename a Category:</h3>
+          <ul>
+            <% @categories.each do |category| %>
+            <li><%= link_to(category.name, "/categories/#{category.id}/edit") %>
+              <% end %>
+            </ul>
+            <br/>
+          </div>
+
+          <div class='col-md-3 dashboard box6'>
+            <h3>Delete Category:</h3>
+            <ul>
+              <% @categories.each do |category| %>
+              <li><%= link_to "Delete (#{category.name})", category_path(category), {method: :delete, :data => {:confirm => "Are you sure?"}} %></li>
+              <% end %></li>
+            </ul>
+            <br/>
+          </div>
+        </div>
+
+        <div class='row container-height'>
+          <div class='col-md-6 dashboard box1'>
+            <h3>Upload Photos</h3>
+            <div>
+              <%= form_for @photo, url: photos_path(@photo) do |f| %>
+              <%= f.text_field :name %>
+              <%= f.file_field :name %>
+
+              <%= f.label :category, 'Select categories' %>
+              <%= f.select :category_ids, Category.all.collect {|category| [category.name, category.id]}, {}, :multiple => true %>
+
+              <%= f.label :album, 'Select album' %>
+              <%= f.collection_select :album_id, Album.all, :id, :name %>
+
+              <%= f.submit "Upload Photo" %>
+              <% end %>
+              <br/>
+            </div>
+          </div>
+
+          <div class='col-md-6 dashboard box2'>
+            <h3>Edit Photos</h3>
+          </div>
+        </div>
+
+        <div class='row'>
+          <div class='col-md-12 dashboard box7'>
+            <h3>Miscellaneous Admin Action</h3>
+            <div class="grid">
+              <% @photos.each do |photo| %>
+              <div class="grid-item-thumbnail col-lg-3">
+
+                <div class="image-link"> <img class="img-responsive center-block img-rounded"src="<%= photo.name.medium %>" />
+                  <a class="overlay" href="#">
+                  </div>
+                </div>
+                <% end %>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>

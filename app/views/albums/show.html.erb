@@ -1,0 +1,24 @@
+<div id='main-content'>
+  <div class='container'>
+    <div>
+        <h1><%= @album.name %></h1>
+      </div>
+    <div class="grid">
+    
+      <% @album.photos.each do |photo|%>
+      <div class="grid-item">
+        <div class='portfolio-box'>
+
+          <div class="image-link">
+            <i class="fa-icon-heart"></i>
+            <img class="img-responsive center-block img-rounded" alt="..." width="..." min-height="..." src="<%= photo.name.medium %>">
+            <a class="overlay" href="#">
+            </div>
+          </div>
+        </div>
+
+
+        <% end  %>
+      </div>
+    </div>
+  </div>

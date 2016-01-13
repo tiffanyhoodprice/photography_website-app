@@ -9,21 +9,24 @@ class PhotosController < ApplicationController
     @photo = Photo.new(photo_params)
     if @photo.save
       # categorized_photo = CategorizedPhoto.new(category_id: :)
-      redirect_to "/photos/new"
+      redirect_to "/admin"
     else
     render :new
     end
   end
 
   def index
-    @photo = Photo.find(3)
+    # @photo = Photo.find(3)
+    @photo = Photo.all
   end
 
   # def show
   # end
 
-  # def destroy
-  # end
+  def destroy
+    Photo.find_by(id: params[:id]).destroy!
+    redirect_to "/admin"
+  end
 
   # def edit
   # end

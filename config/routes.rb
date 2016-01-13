@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root to: 'pages#index'
   get '/about', to: 'pages#about'
   get '/contact', to: 'pages#contact'
-  get '/admin', to: 'user_photos#admin'
+  get '/admin', to: 'pages#admin'
   get '/portraits', to: 'categorized_photos#portraits'
   get '/weddings', to: 'categorized_photos#weddings'
   get '/family', to: 'categorized_photos#family'

@@ -5,4 +5,5 @@
 //= require jednotka/jednotka
 //= require angular
 //= require imagesloaded.pkgd.js
+//= require jquery_ujs
 //= require app

@@ -1,17 +1,17 @@
 class AlbumsController < ApplicationController
 
-  # def index
-  #   @albums = Album.all
-  # end
+  def index
+    @albums = current_user.albums
+  end
 
   def new
     @album = Album.new
   end
 
   def create
-    @album = Album.new(name: params[:album][:name])
+    @album = Album.new(album_params)
     if @album.save
-      redirect_to 'root_path'
+      redirect_to '/admin'
     else
       render :new
     end
@@ -34,21 +34,16 @@ class AlbumsController < ApplicationController
   #   end
   # end
 
-  def portraits
-  end
-
-  def weddings  
-  end
-
-  def family
-  end
-
-  def events
-  end
-
   def destroy
-    Album.find_by(id: params[:id]).update(active: false)
-    redirect_to "/albums"
+    # throw 'yo'
+    Album.find_by(id: params[:id]).destroy!
+    redirect_to "/admin"
   end
   
+  private
+
+    def album_params    
+      params.require(:album).permit(:name)
+    end
+
 end
