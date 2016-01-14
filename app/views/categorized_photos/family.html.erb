@@ -1,19 +1,19 @@
 <div id='main-content'>
   <div class='container'>
-   <h1>Family Photography</h1>
+    <h1>Family Photography</h1>
     <div class="grid">
+      
       <% @CategorizedPhotos.each do |categorized_photo| %>
-
-      <% if categorized_photo.photo %>
-      <div class="grid-item">
-         <div class='portfolio-box'>
-          <div class="image-link">
-            <i class="fa-icon-search"></i>
-            <img class="img-responsive center-block img-rounded" alt="..." width="..." height="..." src="<%= categorized_photo.photo.name.medium %>">
+        <% if categorized_photo.photo %>
+          <div class="grid-item">
+            <div class='portfolio-box'>
+              <div class="image-link">
+                <i class="fa-icon-search"></i>
+                <img class="img-responsive center-block img-rounded" alt="..." width="..." height="..." src="<%= categorized_photo.photo.name.medium %>">
+              </div>
+            </div>
           </div>
-          </div>
-      </div>
-      <% end %>
+        <% end %>
       <% end %>
     </div>
 
@@ -21,7 +21,7 @@
 
 
   </div>
-  <div class='fade' id='scroll-to-top'>
-    <i class='fa fa-chevron-up'></i>
-  </div>
+    <div class='fade' id='scroll-to-top'>
+      <i class='fa fa-chevron-up'></i>
+    </div>
 </div>

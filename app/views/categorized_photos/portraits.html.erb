@@ -4,24 +4,19 @@
     <div class="grid">
       <% @CategorizedPhotos.each do |categorized_photo| %>
       <div class="grid-item">
-         <div class='portfolio-box'>
+        <div class='portfolio-box'>
           <div class="image-link">
             <i class="fa-icon-search"></i>
             <img class="img-responsive center-block img-rounded" alt="..." width="..." height="..." src="<%= categorized_photo.photo.name.medium %>">
           </div>
-          </div>
+        </div>
         
       </div>
       <% end %>
     </div>
     
-
-
-
-
-
   </div>
-  <div class='fade' id='scroll-to-top'>
-    <i class='fa fa-chevron-up'></i>
-  </div>
+    <div class='fade' id='scroll-to-top'>
+      <i class='fa fa-chevron-up'></i>
+    </div>
 </div>

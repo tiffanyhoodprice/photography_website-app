@@ -28,8 +28,10 @@ class PhotosController < ApplicationController
     redirect_to "/admin"
   end
 
-  # def edit
-  # end
+  def edit
+    id = params[:id]
+    @photo = Photo.find_by(id: id)
+  end
 
   private
 

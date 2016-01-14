@@ -1,0 +1,21 @@
+<div id='main-content'>
+  <div class='container'>
+      <div>
+        <table border='1'>
+          <tr>
+            <th>Email</th>
+            <th>User Type</th>
+            <th>Delete?</th>
+          </tr>
+          <% @users.each do |user| %>
+          <tr>
+            <td><%= user.email %></td>
+            <td><%= user.user_type %></td>
+            <td><%= link_to "Delete (#{user.id})", admin_destroy_user_path(user), {method: :delete, :data => {:confirm => "Are you sure?"}} %></td>
+          </tr>
+          <% end %>
+        </table>
+      
+      </div>
+  </div>
+</div>

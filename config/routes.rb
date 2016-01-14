@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :users
+  match 'users/:id' => 'users#destroy', :via => :delete, :as => :admin_destroy_user
   root to: 'pages#index'
   get '/about', to: 'pages#about'
   get '/contact', to: 'pages#contact'
@@ -14,9 +15,9 @@ Rails.application.routes.draw do
   resources :categories
   resources :categorized_photos
   resources :photos
-  resources :user_photos
   resources :album_photos
   resources :pages
+  resources :users, only: [:index, :show]
  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

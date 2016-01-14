@@ -5,19 +5,23 @@
 //$contrast: #01a9e0;
 //@import "jednotka/jednotka";
 
-// .row.container-height {
-//   overflow: hidden; 
-// }
 
-// .row.container-height > [class*="col-"]{
-//     margin-bottom: -99999px;
-//     padding-bottom: 99999px;
-// }
+.row.container-height {
+  overflow: hidden;
+  height:100%
+}
+
+.row.container-height > [class*="col-"]{
+    margin-bottom: -99999px;
+    padding-bottom: 99999px;
+}
 .thumbnail {
   max-width:100px;
+  background: gray;
+
 }
 .box1 {
-  background: #8DC153;
+  background: #D9534F;
 }
 
 .box2 {
@@ -33,7 +37,7 @@
 }
 
 .box5 {
-  background: #D9534F;
+  background: lightgreen;
 }
 
 .box6 {
@@ -42,6 +46,10 @@
 
 .box7 {
   background: #9CA4AF;
+}
+
+.box8 {
+  background: #8DC153;
 }
 .dashboard {
   padding-bottom:10px;

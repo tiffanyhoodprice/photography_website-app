@@ -1,9 +1,9 @@
 <div id='main-content'>
   <div class='container'>
-  <% @current_user.albums.each do |album|%>
-  <div class="album">
-    <%= link_to album.name, "/albums/#{album.id}" %>
-  </div>
-  <% end  %>
+    <% @current_user.albums.each do |album|%>
+    <div class="album">
+      <%= link_to album.name, "/albums/#{album.id}" %>
+    </div>
+    <% end  %>
   </div>
 </div>

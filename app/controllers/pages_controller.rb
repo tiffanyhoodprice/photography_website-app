@@ -9,6 +9,7 @@ before_action :authenticate_user!, only: [:admin]
       @albums = Album.all
       @categories = Category.all
       @photos = Photo.all
+      @users = User.all
     else
       redirect_to '/'
       flash[:admin_violation] = "Need special permissions."
