@@ -1,4 +1,6 @@
-<div id='main-content'>
+<div ng-app="app">
+  <div ng-controller="fav_photosCtrl" >
+    <div id='main-content'>
   <div class='container'>
     <div>
       <h1><%= @album.name %></h1>
@@ -14,10 +16,32 @@
             <img class="img-responsive center-block img-rounded" alt="..." width="..." min-height="..." src="<%= photo.name.medium %>">
             <a class="overlay" href="#">
             </div>
+            <% if current_user %>
+              <% if user_signed_in? %>
+              <img class="favorited-icon unfavorited"
+              ng-class="{active:!photo.isFavorited}"
+              ng-mouseenter="hover = true"
+              ng-mouseleave="hover = false"
+              ng-click="toggleFavorites(photo)" 
+              ng-src="{{hover &&'/favorites/favorited.png' || '/favorites/unfavorited.png'}}" 
+              title="Add to Favorites">
+
+              <img class="favorited-icon favorited" 
+              ng-class="{active:photo.isFavorited}"
+              ng-click="toggleFavorites(recipe)"
+              ng-mouseenter="hover = true"
+              ng-mouseleave="hover = false"
+              ng-src="{{hover && '/favorites/unfavorited.png' || '/favorites/favorited.png'}}" 
+              title="Remove from Favorites"> 
+          <% end %>
+              <% end %>
+
           </div>
         </div>
         <% end  %>
     
     </div>
   </div>
+</div>
+</div>
 </div>

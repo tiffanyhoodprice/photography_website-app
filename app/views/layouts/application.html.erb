@@ -25,6 +25,7 @@
               <%= image_tag("TPPhotoLogoWhite.png", :size => "200x50") %>
             </a>
           </div>
+          
           <div class='collapse navbar-collapse navbar-header-collapse'>
             <ul class='nav navbar-nav navbar-right'>
              <li class='bad_alert'><% if flash[:admin_violation] %>
@@ -116,6 +117,18 @@
                     </span>
                   </a>
                   <% end %>
+                  
+                <% if current_user && current_user.user_type != "admin" %>
+                <li class='dropdown'>
+                  <a class='dropdown-toggle' data-delay='50' data-hover='dropdown' href='/albums/'>
+                    <span>
+                      My Account
+                      
+                    </span>
+                  </a>
+                </li>
+                <% else  %>
+
                   <% if current_user && current_user.user_type == "admin" %>
                   <li class='dropdown'>
                     <a class='dropdown-toggle' data-delay='50' data-hover='dropdown' href='/admin'>
@@ -125,6 +138,10 @@
                       </span>
                     </a>
                     <% end %>
+                    <% end %>
+
+
+
 
                   </div>
                 </nav>
@@ -205,11 +222,6 @@
 </div>
 <!-- / required javascripts -->
 
-
-</body>
-</html>
-
-
 <script type="text/javascript">
 $('.container').imagesLoaded( function() {
   $('.grid').masonry({ 
@@ -218,3 +230,8 @@ $('.container').imagesLoaded( function() {
   });
 });
 </script>
+
+</body>
+</html>
+
+

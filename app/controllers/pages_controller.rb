@@ -15,6 +15,7 @@ before_action :authenticate_user!, only: [:admin]
       flash[:admin_violation] = "Need special permissions."
     end
   end
+  
   def index
     @albums = Album.all
   end
@@ -22,7 +23,14 @@ before_action :authenticate_user!, only: [:admin]
   def about
   end
 
-  def contact
-  end
+  # def contact
+  #   UserMailer.contact(name, email, message).deliver_now
+  #   redirect_to '/'
+  # end
+  
 
+
+  def send_email
+
+  end
 end

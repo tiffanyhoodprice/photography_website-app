@@ -1,4 +1,5 @@
 class AlbumsController < ApplicationController
+before_action :authenticate_user!
 
   def index
     @albums = current_user.albums
@@ -19,6 +20,10 @@ class AlbumsController < ApplicationController
 
   def show
     @album = Album.find_by(id: params[:id])
+    if @album.user_id != current_user.id
+      flash[:admin_violation] = "Need special permissions."
+      redirect_to '/'
+    end
   end
 
   def edit

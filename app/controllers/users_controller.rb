@@ -10,16 +10,27 @@ before_action :authenticate_user!
     end
   end
 
-  def show
-    if current_user.id == user.id
-      @user = User.find_by(id: params[:id])
-    else
-      redirect_to '/'
-      flash[:admin_violation] = "Need special permissions."
+  def new
+    @user = User.new
+    if @user.save
+      redirect_to '/admin'
     end
   end
 
-   def destroy
+  # def show
+  #   @user = User.find_by(id: params[:id])
+  #   if @current_user.id != user.id
+  #     flash[:admin_violation] = "Need special permissions."
+  #     redirect_to '/'
+  #   end
+    
+  #   # else
+  #   #   redirect_to '/'
+  #   #   flash[:admin_violation] = "Need special permissions."
+  #   # end
+  # end
+
+  def destroy
     User.find_by(id: params[:id]).destroy!
     redirect_to "/admin"
   end
@@ -27,11 +38,20 @@ before_action :authenticate_user!
   def edit
     id = params[:id]
     @user = User.find_by(id: id)
+    if @user.id != current_user.id
+      flash[:admin_violation] = "Need special permissions."
+      redirect_to '/'
+    end
   end
 
   def create
     @user = User.new(user_params)
+    letters = ('A'..'Z').to_a
+    password_string = (0...8).map { |n| letters.sample }.join
+    @user.password = password_string
     if @user.save
+      puts password_string
+    UserMailer.welcome_client(@user, password_string).deliver_now
       redirect_to "/admin"
     else
     render :new

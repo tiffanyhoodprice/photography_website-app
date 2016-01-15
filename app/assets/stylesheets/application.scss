@@ -6,6 +6,11 @@
 //@import "jednotka/jednotka";
 
 
+
+.admin-table {
+  width:100%;
+}
+
 .row.container-height {
   overflow: hidden;
   height:100%
@@ -15,10 +20,13 @@
     margin-bottom: -99999px;
     padding-bottom: 99999px;
 }
-.thumbnail {
-  max-width:100px;
-  background: gray;
 
+.thumbnail {
+  background: gray;
+}
+
+.thumb-image {
+  width: 100px;
 }
 .box1 {
   background: #D9534F;
@@ -97,9 +105,12 @@
   width: 350px;
   padding: 5px;
 }
-.grid-item-thumbnail { 
-  width: 150px;
-  padding: 5px;
+.admin-grid-item { 
+  
+}
+.admin-grid-item-thumbnail { 
+  width: 100px !important;
+  padding: 5px !important;
 }
 .grid-item--width2 { 
   width: 400px; 

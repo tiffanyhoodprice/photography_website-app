@@ -3,8 +3,11 @@ Rails.application.routes.draw do
   devise_for :users
   match 'users/:id' => 'users#destroy', :via => :delete, :as => :admin_destroy_user
   root to: 'pages#index'
+  get '/users/:id', to: 'users#show'
+  # patch '/admin/users/:id', to: 'users#update'
   get '/about', to: 'pages#about'
   get '/contact', to: 'pages#contact'
+  post '/contact.php'
   get '/admin', to: 'pages#admin'
   get '/portraits', to: 'categorized_photos#portraits'
   get '/weddings', to: 'categorized_photos#weddings'
@@ -17,7 +20,14 @@ Rails.application.routes.draw do
   resources :photos
   resources :album_photos
   resources :pages
-  resources :users, only: [:index, :show]
+  # resources :photos do
+  #   put :favorite, on: :member
+# end
+
+  scope "/admin" do
+    resources :users, only: [:index, :show, :new, :create, :edit]
+  end
+
  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -94,9 +94,9 @@
           </div>
 
           <div class='col-md-6 dashboard box2'>
-            <h3>Modify/Delete Users</h3>
+            <h3>Create/Delete Users</h3>
             <div>
-              <table border='1'>
+              <table class='admin-table' border='1'>
                 <tr>
                   <th>Email</th>
                   <th>User Type</th>
@@ -111,23 +111,25 @@
                 <% end %>
               </table>
             </div>
+              <div>
+              <br />
+                <%= button_to "Create New User", { controller: :users, action: "new" },  method: :get %>
+              </div>
+
           </div>
         </div>
 
         <div class='row container-height'>
           <div class='col-md-12 dashboard box7'>
             <h3>Delete Photos</h3>
-            <div class="grid">
+            <div class="admin-grid">
               <% @photos.each do |photo| %>
-              <div class="grid-item-thumbnail col-lg-3">
-                <div class='container'>
-                  <div class="image-link thumbnail"> 
-                    <img class="img-responsive center-block img-rounded "src="<%= photo.name.medium %>" />
-                    <!-- <a class="overlay" href="#"> -->
-                    <%= link_to "Delete (#{photo.id})", photo_path(photo), {method: :delete, :data => {:confirm => "Are you sure?"}} %><!-- <br/>
-                    <%= link_to( "Rename #{photo.id}", "/photos/#{photo.id}/edit") %> -->
+              <div class="admin-grid-item admin-grid-item-thumbnail">
+                  <div class="thumbnail"> 
+                    <img class="img-rounded thumb-image" src="<%= photo.name.medium %>" />
+                    <!-- <a class="overlay" href=""> -->
+                    <%= link_to "Delete (#{photo.id})", photo_path(photo), {method: :delete, :data => {:confirm => "Are you sure?"}} %>
                   </div>
-                </div>
               </div>
              <% end %>   
             </div>
@@ -137,4 +139,13 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+$('.container').imagesLoaded( function() {
+  $('.admin-grid').masonry({ 
+    itemSelector: '.admin-grid-item',
+    columnWidth: 42
+  });
+});
+</script>
 
