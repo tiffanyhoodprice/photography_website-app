@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
 # Use postgresql as the database for Active Record
-gem 'pg'
+gem 'pg', group: :production
 # Use SCSS for stylesheets
 gem "sprockets", "~> 2.11.0"
 gem "sass-rails", "4.0.2"
@@ -32,6 +32,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog'
 gem 'dotenv-rails'
+gem 'rails_12factor', group: :production
 
 
 # Use ActiveModel has_secure_password
