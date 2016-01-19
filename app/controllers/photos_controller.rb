@@ -19,13 +19,13 @@ class PhotosController < ApplicationController
     photo_params[:names].each do |name|
       Photo.create(album_id: album_id, category_ids: category_ids, name: name)
     end
-    flash[:notice] = "Photo has been successfully uploaded."
+    flash[:success] = "Photo has been successfully uploaded."
     redirect_to "/admin"
   end
 
   def destroy
     Photo.find_by(id: params[:id]).destroy!
-    flash[:notice] = "Photo has been deleted."
+    flash[:success] = "Photo has been deleted."
     redirect_to "/admin"
   end
 

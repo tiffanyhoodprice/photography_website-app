@@ -6,14 +6,14 @@ before_action :authenticate_user!
       @users = User.all
     else
       redirect_to '/'
-      flash[:admin_violation] = "Need special permissions."
+      flash[:admin_violation]
     end
   end
 
   def new
     @user = User.new
     if @user.save
-      flash[:notice] = "New user, #{@user}, has been created."
+      flash[:success] = "New user, #{@user}, has been created."
       redirect_to '/admin'
     end
   end
@@ -21,13 +21,13 @@ before_action :authenticate_user!
   def show
     @user = User.find_by(id: params[:id])
     if @current_user.id != user.id
-      flash[:admin_violation] = "Need special permissions."
+      flash[:admin_violation]
       redirect_to '/'
   end
 
   def destroy
     User.find_by(id: params[:id]).destroy!
-    flash[:notice] = "User has been deleted."
+    flash[:success] = "User has been deleted."
     redirect_to "/admin"
   end
 
@@ -35,7 +35,7 @@ before_action :authenticate_user!
     id = params[:id]
     @user = User.find_by(id: id)
     if @user.id != current_user.id
-      flash[:admin_violation] = "Need special permissions."
+      flash[:admin_violation]
       redirect_to '/'
     end
   end

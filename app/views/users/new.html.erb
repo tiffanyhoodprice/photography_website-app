@@ -1,28 +1,28 @@
 <div id='main-content'>
   <div class='container'>
     <%= form_for @user do |f| %>
-  <div>
-    <%= f.label :user_first_name %>
-    <%= f.text_field :first_name %>
-  </div>
+      <div>
+        <%= f.label :user_first_name %>
+        <%= f.text_field :first_name %>
+      </div>
 
-  <div>
-    <%= f.label :user_last_name %>
-    <%= f.text_field :last_name %>
-  </div>
+      <div>
+        <%= f.label :user_last_name %>
+        <%= f.text_field :last_name %>
+      </div>
 
-  <div>
-    <%= f.label :phone_number %>
-    <%= f.text_field :phone_number %>
-  </div>
-  
-  <div>
-    <%= f.label :user_email %>
-    <%= f.text_field :email %>
-  </div>
-  
-  <%= f.submit "Submit" %>
+      <div>
+        <%= f.label :phone_number %>
+        <%= f.text_field :phone_number %>
+      </div>
+      
+      <div>
+        <%= f.label :user_email %>
+        <%= f.text_field :email %>
+      </div>
+      
+      <%= f.submit "Submit" %>
 
-<% end %>
- </div>
- </div>
+    <% end %>
+  </div>
+</div>

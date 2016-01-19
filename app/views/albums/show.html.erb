@@ -1,46 +1,35 @@
-<div ng-app="app">
-  <div ng-controller="fav_photosCtrl" >
-    <div id='main-content'>
+<div id='main-content'>
   <div class='container'>
     <div>
       <h1><%= @album.name %></h1>
     </div>
+      <div class="grid">
+        <% @album.photos.each do |photo|%>
+        <div class="grid-item">
+          <div class='portfolio-box'>
 
-    <div class="grid">
-
-      <% @album.photos.each do |photo|%>
-
-      <div class="grid-item">
-        <div class='portfolio-box'>
-
-          <div class="image-link">
-            <img class="img-responsive center-block img-rounded" alt="..." width="..." min-height="..." src="<%= photo.name.medium %>">
-            <a class="overlay" href="#">
-              <%= form_tag(create_favorite_path, remote: true) do %>
-              <%= hidden_field_tag "photo_id", photo.id %>
+            <div class="image-link">
+              <img class="img-responsive center-block img-rounded" alt="..." width="..." min-height="..." src="<%= photo.name.medium %>">
+              
+                <%= form_tag(create_favorite_path, remote: true) do %>
+                <%= hidden_field_tag "photo_id", photo.id %>
                 <%= button_tag :class => "fav_button" do %>
                 <% if current_user.favorite_photos.find_by_photo_id(photo.id) %>
-                  <i style="" class='fa fa-heart'></i> Favorite
+                <i style="" class='fa fa-heart'></i> Favorite
                 <% else %>
-                  <i style="" class='fa fa-heart-o'></i> Favorite
+                <i style="" class='fa fa-heart-o'></i> Favorite
                 <% end %>
 
                 <% end %>
-
-              <% end %>
+                <% end %>
+            </div>
 
           </div>
-           
-            
-
         </div>
+        <% end  %>
       </div>
-      <% end  %>
-    
-
     </div>
   </div>
-</div>
 </div>
 </div>
 

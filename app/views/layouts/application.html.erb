@@ -25,20 +25,28 @@
               <%= image_tag("TPPhotoLogoWhite.png", :size => "200x50") %>
             </a>
           </div>
+            <% flash.each do |type, message| %>
+              <div class="alert <%= bootstrap_class_for(type) %>">
+                <button class="close" data-dismiss="alert">×</button>
+                  <%= message %>
+              </div>
+            <% end %>
           
           <div class='collapse navbar-collapse navbar-header-collapse'>
             <ul class='nav navbar-nav navbar-right'>
-             <li class='bad_alert'><% if flash[:admin_violation] %>
-              Special permissions required!</p>
-              <% end  %></li>
-              <li class='dropdown'>
-                <a class='dropdown-toggle' data-delay='50' data-hover='dropdown'  href='/'>
-                  <span>
-                    Home
-                    <i class=''></i>
-                  </span>
-                </a> 
+              <li class='bad_alert'>
+                <% if flash[:admin_violation] %>
+                  <p><%= flash[:notice] %></p>
+                <% end  %>
               </li>
+                <li class='dropdown'>
+                  <a class='dropdown-toggle' data-delay='50' data-hover='dropdown'  href='/'>
+                    <span>
+                      Home
+                    <i class=''></i>
+                    </span>
+                  </a> 
+                </li>
               <li class='dropdown'>
                 <a class='dropdown-toggle' data-delay='50' data-hover='dropdown'  href='#'>
                   <span>
@@ -144,26 +152,18 @@
                     </a>
                   </li>
                 <% end %>
- 
                   </div>
                 </nav>
-                <% flash.each do |type, message| %>
-                <div class="alert <%= bootstrap_class_for(type) %> fade in">
-                  <button class="close" data-dismiss="alert">×</button>
-                  <%= message %>
-                </div>
-              <% end %>
-              </div>
-              
             </header>
+           
+           
             <%= yield %>
+        
             <footer id='footer'>
               <div id='footer-main'>
                 <div class='container'>
                   <div class='row'>
-                    <div class='col-md-3 col-sm-6 info-box'>
-
-                    </div>
+                    
 
                     <div class='col-sm-12 info-box'>
                       <a href="/messages/new"><h2 class='title'>Contact</h2></a>
