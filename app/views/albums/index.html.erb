@@ -9,13 +9,12 @@
         <li>Last Name: <%= @current_user.last_name %></li>
         <li>Email: <%= @current_user.email %></li>
         <li>Phone: <%= @current_user.phone_number %></li>
-        <!-- <td><button><%= link_to "Edit Contact Info", "/admin/users/#{@current_user.id}/edit" %></button></td> -->
-      </div>
+    </div>
 
       <div class='col-md-4'>
         <h3>Your Albums</h3>
         <% @current_user.albums.each do |album|%>
-        <div class="album">
+        <div class="album"> 
           <%= link_to album.name, "/albums/#{album.id}" %>
         </div>
         <% end  %>
@@ -24,35 +23,31 @@
       <div class='col-md-4'>
         <h3>Favorited Photos</h3>
         <% if current_user.favorite_photos.any? %>
-        <table class="table">
-          <tr>
-            <th>Photos</th>
-            <th></th>
-          </tr>
-          <% current_user.favorite_photos.each do |favorite_photo| %>
-            <% favorite_photo.photo_id %>
-          <tr>
-            <td><%= link_to favorite_photo.photo.name.medium, :target => 'new' %></td>
-            <td><%= link_to "Remove From Favorites", "/favorite_photos/photos/#{favorite_photo.photo_id}", method: :delete %></td>
-          </tr>
-          <% end %>
-        </table>
+          <div class="admin-grid">
+            <% current_user.favorite_photos.each do |favorite_photo| %>
+
+            <div class="admin-grid-item admin-grid-item-thumbnail">
+              <div class="thumbnail"> 
+                <img class="img-rounded thumb-image" src="<%= favorite_photo.photo.name.medium %>" />
+              </div>
+            </div>
+            <% end %>   
+          </div>
         <% else %>
-        <p>You currently have no favorite photos.</p>
+          <p>You currently have no favorite photos.</p>
         <% end %>
       </div>
+    </div>
+  </div>
+</div>
 
-    <!-- <div class='col-md-6'>
-      <h3>Your Favorited Photos</h3>
-        <% @current_user.albums.each do |album|%>
-          <div class="album">
-            <%= link_to album.name, "/albums/#{album.id}" %>
-          </div>
-         <% end  %>
-       </div> -->
 
-       <i class="fa fa-heart"></i>
-       <i class="fa fa-heart-o"></i>
 
-     </div>
-   </div>
+<script type="text/javascript">
+$('.container').imagesLoaded( function() {
+  $('.admin-grid').masonry({ 
+    itemSelector: '.admin-grid-item',
+    columnWidth: 20
+  });
+});
+</script>

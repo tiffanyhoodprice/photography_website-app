@@ -1,33 +1,45 @@
 Rails.application.routes.draw do
 
+  resources :messages, only: [:new, :create]
+
   devise_for :users
   match 'users/:id' => 'users#destroy', :via => :delete, :as => :admin_destroy_user
   root to: 'pages#index'
   get '/users/:id', to: 'users#show'
   # patch '/admin/users/:id', to: 'users#update'
   get '/about', to: 'pages#about'
-  get '/contact', to: 'pages#contact'
-  post '/contact.php'
+  get '/contact', to: 'messages#new'
+  # post '/contact.php', 'to pages#contact'
   get '/admin', to: 'pages#admin'
   get '/portraits', to: 'categorized_photos#portraits'
   get '/weddings', to: 'categorized_photos#weddings'
   get '/family', to: 'categorized_photos#family'
   get '/events', to: 'categorized_photos#events'
   get '/scenic', to: 'categorized_photos#scenic'
+  post '/assign_album', to: 'albums#assign_album'
   resources :albums
   resources :categories
   resources :categorized_photos
   resources :photos
   resources :album_photos
   resources :pages
+  resources :messages
   # resources :photos do
   #   put :favorite, on: :member
 # end
+
+ # Favorite photos routes
+  post '/favorite/:id', to: 'photos#favorite', as: :create_favorite
 
   scope "/admin" do
     resources :users, only: [:index, :show, :new, :create, :edit]
   end
 
+  namespace :api do
+    namespace :v1 do
+      resources :photos
+    end
+  end
  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

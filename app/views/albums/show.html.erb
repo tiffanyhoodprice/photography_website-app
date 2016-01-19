@@ -5,43 +5,59 @@
     <div>
       <h1><%= @album.name %></h1>
     </div>
+
     <div class="grid">
 
       <% @album.photos.each do |photo|%>
+
       <div class="grid-item">
         <div class='portfolio-box'>
 
           <div class="image-link">
-            <i class="fa-icon-heart"></i>
             <img class="img-responsive center-block img-rounded" alt="..." width="..." min-height="..." src="<%= photo.name.medium %>">
             <a class="overlay" href="#">
-            </div>
-            <% if current_user %>
-              <% if user_signed_in? %>
-              <img class="favorited-icon unfavorited"
-              ng-class="{active:!photo.isFavorited}"
-              ng-mouseenter="hover = true"
-              ng-mouseleave="hover = false"
-              ng-click="toggleFavorites(photo)" 
-              ng-src="{{hover &&'/favorites/favorited.png' || '/favorites/unfavorited.png'}}" 
-              title="Add to Favorites">
+              <%= form_tag(create_favorite_path, remote: true) do %>
+              <%= hidden_field_tag "photo_id", photo.id %>
+                <%= button_tag :class => "fav_button" do %>
+                <% if current_user.favorite_photos.find_by_photo_id(photo.id) %>
+                  <i style="" class='fa fa-heart'></i> Favorite
+                <% else %>
+                  <i style="" class='fa fa-heart-o'></i> Favorite
+                <% end %>
 
-              <img class="favorited-icon favorited" 
-              ng-class="{active:photo.isFavorited}"
-              ng-click="toggleFavorites(recipe)"
-              ng-mouseenter="hover = true"
-              ng-mouseleave="hover = false"
-              ng-src="{{hover && '/favorites/unfavorited.png' || '/favorites/favorited.png'}}" 
-              title="Remove from Favorites"> 
-          <% end %>
+                <% end %>
+
               <% end %>
 
           </div>
+           
+            
+
         </div>
-        <% end  %>
+      </div>
+      <% end  %>
     
+
     </div>
   </div>
 </div>
 </div>
 </div>
+
+
+<script type="text/javascript">
+$( ".fav_button" ).click(function() {
+  var $button = $(this);
+  var $heart = $button.find(".fa");
+  if ($heart.hasClass("fa-heart")) {
+    $button.find(".fa-heart").addClass("fa-heart-o");
+    $button.find(".fa-heart").removeClass("fa-heart");
+    console.log("Unfaved");
+  }
+  else {
+    $button.find(".fa-heart-o").addClass("fa-heart");
+    $button.find(".fa-heart-o").removeClass("fa-heart-o");
+    console.log("Faved");
+  }
+});
+</script>

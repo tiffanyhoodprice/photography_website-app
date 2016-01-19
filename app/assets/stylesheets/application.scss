@@ -5,7 +5,19 @@
 //$contrast: #01a9e0;
 //@import "jednotka/jednotka";
 
+.fav_button {
+  background:none;
+  border:none;
+  font-size:1em;
 
+}
+
+.alert {
+    position: absolute;
+    left: 20px;
+    top: 100px;
+    z-index: 999;
+}
 
 .admin-table {
   width:100%;

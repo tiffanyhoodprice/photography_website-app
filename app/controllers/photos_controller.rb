@@ -1,8 +1,7 @@
 class PhotosController < ApplicationController
-  before_action :authenticate_admin!, except: [:index]
-
+  before_action :authenticate_admin!, except: [:index, :favorite]
+  
   def index
-    # @photo = Photo.find(3)
     @photo = Photo.all
   end
 
@@ -15,22 +14,18 @@ class PhotosController < ApplicationController
   end
 
   def create
-    @photo = Photo.new(photo_params)
-    if @photo.save
-      # categorized_photo = CategorizedPhoto.new(category_id: :)
-      redirect_to "/admin"
-    else
-    render :new
+    album_id = photo_params[:album_id]
+    category_ids = photo_params[:category_ids]
+    photo_params[:names].each do |name|
+      Photo.create(album_id: album_id, category_ids: category_ids, name: name)
     end
+    flash[:notice] = "Photo has been successfully uploaded."
+    redirect_to "/admin"
   end
-
- 
-
-  # def show
-  # end
 
   def destroy
     Photo.find_by(id: params[:id]).destroy!
+    flash[:notice] = "Photo has been deleted."
     redirect_to "/admin"
   end
 
@@ -39,41 +34,18 @@ class PhotosController < ApplicationController
     @photo = Photo.find_by(id: id)
   end
 
+  def favorite
+    @photo = Photo.find(params[:photo_id])
+
+    if !current_user.favorite_photos.find_by_photo_id(@photo.id)
+      @favorite = FavoritePhoto.new(photo_id: params[:photo_id], user_id: current_user.id)
+      @favorite.save
+    else
+      @photo.favorite_photos.find_by_user_id(current_user.id).destroy
+    end
+  end
+
   
-  # def favorite
-  #   @photo = Photo.find(params[:id])
-  #   @photo.favorites.create(user: current_user)
-  #   redirect_to user_path(@user)
-  # end
-
-  # # remove favorite
-  # def unfavorite
-  #   @photo = Photo.find(params[:id])
-  #   @photo.favorites.where(user: current_user).destroy_all
-  #   redirect_to user_path(@user)
-  # end
-
-
-  # def favorite
-  #   @User = User.find_by(id: params[:id])
-  #   current_user.
-  # end
-
-  # def favorite
-  #   type = params[:type]
-  #   if type == "favorite"
-  #     current_user.favorites << @photo
-  #     redirect_to :back, notice: 'You favorited photo #{@photo.id}'
-
-  #   elsif type == "unfavorite"
-  #     current_user.favorites.delete(@user)
-  #     redirect_to :back, notice: 'Unfavorited photo #{@photo.id}'
-
-  #   else
-  #     # Type missing, nothing happens
-  #     redirect_to :back, notice: 'Nothing happened.'
-  #   end
-  # end
   # def update
   #   @photo = Photo.find_by(id: params[:id])
   #   @photo.update(photo_params)
@@ -93,7 +65,7 @@ class PhotosController < ApplicationController
   private
 
     def photo_params    
-      params.require(:photo).permit(:name, :album_id, category_ids: [])
+      params.require(:photo).permit(:album_id, category_ids: [], names: [])
     end
 
 end

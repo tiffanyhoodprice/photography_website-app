@@ -12,5 +12,7 @@ class Photo < ActiveRecord::Base
   has_many :favorited_by, through: :favorite_photos, source: :user
   
   accepts_nested_attributes_for :categorized_photos
+  accepts_nested_attributes_for :favorite_photos
+  
   # accepts_nested_attributes_for :album_photos
 end

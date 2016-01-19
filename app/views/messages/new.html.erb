@@ -1,0 +1,59 @@
+<div id='main-content'>
+  <div class='container'>
+    <div class='row'>
+
+      <div class='col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2'>
+        <div class='page-header page-header-with-icon'>
+          <i class='fa fa-envelope'></i>
+        <h2>Contact form</h2>
+        </div>
+      <%= form_for @message, :html => {:class => "form"} do |f| %>
+      <% if @message.errors.any? %>
+        <div id="error_explanation">
+          <h2>
+            <%= "#{pluralize(@message.errors.count, "error")} prohibited this message from being sent:" %>
+          </h2>
+
+            <ul>
+              <% @message.errors.full_messages.each do |msg| %>
+                <li>
+                  <%= msg %>
+                </li>
+              <% end %>
+            <ul>
+          </div>
+            <% end %>
+          <div class='row'>
+            <div class='col-sm-12'>
+              <div class="form-group control-group">            
+                <%= f.text_field :name, class: 'form-control', placeholder: 'First and Last Name' %>
+              </div>
+
+              <div class='col-sm-12'>
+                <div class="form-group control-group">
+
+                  <%= f.email_field :email, class: 'form-control', placeholder: 'Email' %>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class='row'>
+            <div class='col-sm-12'>
+              <div class="form-group control-group">
+
+                <%= f.text_area :content, class: 'form-control',placeholder: 'Your message' %>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <%= f.submit 'Send', class: 'btn btn-contrast btn-block form-contact-submit' %>
+            <% end %>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+

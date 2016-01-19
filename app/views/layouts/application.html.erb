@@ -99,37 +99,34 @@
                   </span>
                 </a>
                 <% if !current_user  %>
-                <li class='dropdown'>
-                  <a class='dropdown-toggle' data-delay='50' data-hover='dropdown' href='/users/sign_in'>
-                    <span>
-                      Login/Sign Up
-                      
-                    </span>
-                  </a>
-                </li>
+                  <li class='dropdown'>
+                    <a class='dropdown-toggle' data-delay='50' data-hover='dropdown' href='/users/sign_in'>
+                      <span>
+                        Login/Sign Up
+                        
+                      </span>
+                    </a>
+                  </li>
                 <% else  %>
-
-                <li class='dropdown'>
-                  <a class='dropdown-toggle' data-delay='50' data-hover='dropdown' href='/users/sign_out'>
-                    <span>
-                      Sign Out
-                      <!-- <i class='fa fa-angle-down'></i> -->
-                    </span>
-                  </a>
-                  <% end %>
-                  
+                  <li class='dropdown'>
+                    <a class='dropdown-toggle' data-delay='50' data-hover='dropdown' href='/users/sign_out'>
+                      <span>
+                        Sign Out
+                        <!-- <i class='fa fa-angle-down'></i> -->
+                      </span>
+                    </a>
+                  </li>
+                <% end %>    
                 <% if current_user && current_user.user_type != "admin" %>
-                <li class='dropdown'>
-                  <a class='dropdown-toggle' data-delay='50' data-hover='dropdown' href='/albums/'>
-                    <span>
-                      My Account
-                      
-                    </span>
-                  </a>
-                </li>
-                <% else  %>
-
-                  <% if current_user && current_user.user_type == "admin" %>
+                  <li class='dropdown'>
+                    <a class='dropdown-toggle' data-delay='50' data-hover='dropdown' href='/albums/'>
+                      <span>
+                        My Account
+                        
+                      </span>
+                    </a>
+                  </li>
+                <% elsif current_user && current_user.user_type == "admin" %>
                   <li class='dropdown'>
                     <a class='dropdown-toggle' data-delay='50' data-hover='dropdown' href='/admin'>
                       <span>
@@ -137,15 +134,27 @@
                         <!-- <i class='fa fa-angle-down'></i> -->
                       </span>
                     </a>
-                    <% end %>
-                    <% end %>
-
-
-
-
+                  </li>
+                  <li class='dropdown'>
+                    <a class='dropdown-toggle' data-delay='50' data-hover='dropdown' href='/albums'>
+                      <span>
+                        My Albums
+                        <!-- <i class='fa fa-angle-down'></i> -->
+                      </span>
+                    </a>
+                  </li>
+                <% end %>
+ 
                   </div>
                 </nav>
+                <% flash.each do |type, message| %>
+                <div class="alert <%= bootstrap_class_for(type) %> fade in">
+                  <button class="close" data-dismiss="alert">×</button>
+                  <%= message %>
+                </div>
+              <% end %>
               </div>
+              
             </header>
             <%= yield %>
             <footer id='footer'>
@@ -157,7 +166,7 @@
                     </div>
 
                     <div class='col-sm-12 info-box'>
-                      <a href="/contact"><h2 class='title'>Contact</h2></a>
+                      <a href="/messages/new"><h2 class='title'>Contact</h2></a>
                       <div class='icon-boxes'>
                         <div class='icon-box'>
                           <div class='icon icon-wrap'>

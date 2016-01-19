@@ -13,25 +13,21 @@ before_action :authenticate_user!
   def new
     @user = User.new
     if @user.save
+      flash[:notice] = "New user, #{@user}, has been created."
       redirect_to '/admin'
     end
   end
 
-  # def show
-  #   @user = User.find_by(id: params[:id])
-  #   if @current_user.id != user.id
-  #     flash[:admin_violation] = "Need special permissions."
-  #     redirect_to '/'
-  #   end
-    
-  #   # else
-  #   #   redirect_to '/'
-  #   #   flash[:admin_violation] = "Need special permissions."
-  #   # end
-  # end
+  def show
+    @user = User.find_by(id: params[:id])
+    if @current_user.id != user.id
+      flash[:admin_violation] = "Need special permissions."
+      redirect_to '/'
+  end
 
   def destroy
     User.find_by(id: params[:id]).destroy!
+    flash[:notice] = "User has been deleted."
     redirect_to "/admin"
   end
 
