@@ -75,6 +75,7 @@
 .thumb-image {
   width: 100px;
 }
+
 .box1 {
   background: #D9534F;
 }
@@ -117,29 +118,6 @@
 .dashboard a:visited {
   color: navy;
 }
-// html,body,.dashboard{
-//     width:100%;
-//     height:100%;
-//     margin:0;
-// }
-// .col1,.col2,.box7,.box11{
-//     float:left;
-//     border-style:solid;
-// }
-
-// .col1{
-//     width:50%;
-//     height:100%;
-// }
-// .col1 > div{
-//     width:100%;
-//     height:25%;
-// }
-// .col2{
-//     width: 50%;
-//     height:100%;
-// }
-
 
 .logo {
   width:200px;
@@ -164,7 +142,6 @@
   width: 400px; 
   padding: 5px;
   }
-
 
 .lead {
   font-size:130%;
@@ -239,19 +216,6 @@
   background-position: center;
 }
 
-
-// #raya {
-//   background-image: image-url("carousels/raya.jpg");
-// }
-
-// #parents {
-//   background-image: image-url("carousels/parents.jpg");
-// }
-
 #wedding {
   background-image: image-url("carousels/ccwedding.png");
 }
-
-// #bridge {
-//   background-image: image-url("carousels/bridge.jpg");
-// }
