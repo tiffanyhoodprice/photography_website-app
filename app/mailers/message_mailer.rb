@@ -1,6 +1,6 @@
 class MessageMailer < ApplicationMailer
 
-default :to => "tiffany.hood@mail.com"
+default :to => "tiffanypricephotography@gmail.com"
 
   def send_message(params)
    
@@ -8,7 +8,7 @@ default :to => "tiffany.hood@mail.com"
     @email = params["email"]
     @content = params["content"]
    
-    mail(to: 'tiffany.hood@mail.com', from: 'tiffany.hood@mail.com', subject: "Contact Form", cc: @email)
+    mail(to: 'tiffanypricephotography@gmail.com', from: 'tiffanypricephotography@gmail.com', subject: "Contact Form", cc: @email)
   end
 
 end
