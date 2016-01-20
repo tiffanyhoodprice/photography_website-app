@@ -23,6 +23,7 @@ before_action :authenticate_user!
     if @current_user.id != user.id
       flash[:admin_violation]
       redirect_to '/'
+    end
   end
 
   def destroy
